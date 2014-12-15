@@ -1,0 +1,18 @@
+<body ng-controller="SongListController">
+    <div class="container-fluid">
+        <div id="song-list" class="row">
+        <table>
+            <div ng-repeat="song in songs | filter:query | orderBy:song">
+                <div ng-show="CreateHeader(song.artist)">
+                        <h3>{{song.artist}}</h3>
+                </div>
+                <label>
+                    <a ng-href='' ng-click='send(song)'>{{song.name}}</a>
+                </label>
+            
+            </div>
+        </table>
+        </div>
+    </div>
+</script>
+</body>

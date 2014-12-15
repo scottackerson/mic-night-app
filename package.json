@@ -1,0 +1,14 @@
+{
+	"name": "mic-night-app",
+	"description": "APP for Mic Night!",
+	"main": "server.js",
+	"dependencies": {
+		"express": "~4.0.0",
+		"body-parser": "~1.0.1",
+		"lirc_node": "*",
+		"method-override": "~2.1.2",
+		"morgan"     : "~1.2.2"
+	},
+	"author": "Scott Ackerson <scott.ackerson@gmail.com>",
+	"version": "0.0.1"
+}
