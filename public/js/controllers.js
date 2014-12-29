@@ -32,10 +32,8 @@ MicNightControllers.controller('ToolsController', function($scope, $http) {
 
 function USBMode ($http) {
     $http.get('/api/remote/karaoke/USBMode');
-    console.log('Called USBMode');
 };
 
 function GUIMode ($http) {
     $http.get('/api/remote/karaoke/GUIMode');
-    console.log('Called GUIMode');
 };

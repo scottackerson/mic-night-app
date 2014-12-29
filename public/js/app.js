@@ -16,7 +16,7 @@ micNightApp.config(['$routeProvider',
         controller: 'ToolsController'
       }).
       otherwise({
-        redirectTo: '/s'
+        redirectTo: '/'
       });
   }]);
 

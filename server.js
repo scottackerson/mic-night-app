@@ -16,17 +16,10 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 
 var port = process.env.PORT || 8080; 		
 
-if (process.env.NODE_ENV == 'test') {
-    lirc_node.remotes = require(__dirname + '/config/remotes.json');
-    config = require(__dirname + '/config/config.json');
-} else {
-    lirc_node.init();
-    console.log(lirc_node.remotes);
-}
+lirc_node.init();
 
 app.get('/api/songs/play/:track', function(req, res) {
     var track = req.params.track;
-    console.log('Playing track ' + track);
     playTrack(track);
     res.setHeader('Cache-Control', 'no-cache');
     res.send(200);
@@ -34,11 +27,9 @@ app.get('/api/songs/play/:track', function(req, res) {
 
 app.get('/api/remote/karaoke/USBMode', function(req, res) {
     console.log('toggle USBMode');
-    playTrack(track);
 });
 
 function playTrack(track) {
-    console.log('playTrack: '+ track);
     if (track) { 
         var i = 0;
         var interval = function() {
@@ -55,6 +46,5 @@ function playTrack(track) {
     }
 };
 
-// START THE SERVER
 app.listen(port);
 console.log('Music happens on port ' + port);
