@@ -17,9 +17,8 @@ MicNightControllers.controller('SongListController', function($scope, $http) {
     }
 });
 
-function playTrack (trackID, $http) {
-    $http.get('/api/songs/play/'+trackID);
-    console.log('Called playTrack');
+function playTrack (track, $http) {
+    $http.get('/api/songs/play/'+track);
 };
 
 MicNightControllers.controller('ToolsController', function($scope, $http) {

@@ -21,19 +21,39 @@ if (process.env.NODE_ENV == 'test') {
     config = require(__dirname + '/config/config.json');
 } else {
     lirc_node.init();
+    console.log(lirc_node.remotes);
 }
 
-app.get('/', function(req, res) {
-        res.sendfile('./public/index.html');
-    });
+app.get('/api/songs/play/:track', function(req, res) {
+    var track = req.params.track;
+    console.log('Playing track ' + track);
+    playTrack(track);
+    res.setHeader('Cache-Control', 'no-cache');
+    res.send(200);
+});
 
-app.get('/:artist/songs', function(req, res) {
-		res.sendfile('./public/artistsongs.html');
-	});
+app.get('/api/remote/karaoke/USBMode', function(req, res) {
+    console.log('toggle USBMode');
+    playTrack(track);
+});
 
-app.get('/songs', function(req, res) {
-		res.sendfile('./public/songs.html');
-	});
+function playTrack(track) {
+    console.log('playTrack: '+ track);
+    if (track) { 
+        var i = 0;
+        var interval = function() {
+            if (track[i]) {
+                var command = track[i];
+                lirc_node.irsend.send_once('karaoke', command[0], function() {});
+                console.log("Sent " + command);
+            } else {
+                clearInterval(interval);
+            }
+            i += 1;
+        };
+        setInterval(interval, 200);
+    }
+};
 
 // START THE SERVER
 app.listen(port);
