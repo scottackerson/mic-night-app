@@ -18,35 +18,29 @@ Installing mic-night:
 
 Open ''http://server:3000/'' in a web browser.  
 
-The application has been tested using a Raspberry PI and an IR Transceiver (schematic can be found at [Alex Bain's] (http://alexba.in/blog/2013/03/09/raspberrypi-ir-schematic-for-lirc/) project site). Any environment that is capable of meeting the deployment requirements and can  interface LIRC and an infrared transceiver should be able to host the applciation.
+The application has been tested using a Raspberry PI and an IR Transceiver (schematic can be found at [Alex Bain's](http://alexba.in/blog/2013/03/09/raspberrypi-ir-schematic-for-lirc/) project site). Any environment that is capable of meeting the deployment requirements and can  interface LIRC and an infrared transceiver should be able to host the applciation.
 
 ## Data files
 The song list is a json file (song.json) in /public/data with the following format:
 ```
 [
 	{ 
-		"_id" : { "$oid" : "54bdd6c9f4fc7f80f85d5448" }, 
+		"_id" : 2344345, 
 		"track" : 1, 
-		"artist" : Sinatra, 
+		"artist" : "Sinatra", 
 		"name" : "New York" 
 	},
 	{ 
-		"_id" : { "$oid" : "54bdd6c9f4fc7f80f85d5447" }, 
+		"_id" : 234322, 
 		"track" : 2, 
-		"artist" : Dean Martin, 
+		"artist" : "Dean Martin", 
 		"name" : "Ain't That A Kick In The Head" 
 	}
 ]
 ```
-NOTE: The oid is an artifact of the csv->json conversion described below and is not a required field.
+Note: _id is not used in this application and will be fixed at some point.
 
-Some karaoke machines allow extracting the song library to a CSV.  CSVs are also easier to manage your overall library.  Using [mongoDB](http://docs.mongodb.org/), it is simple to convert that csv to the json file:
-* Install [mongo](http://docs.mongodb.org/manual/) (tested with Mongo 2.6.5)
-* Create a csv with the following format: track, artist, name.
-* If saving on a mac, use the format "Windows Comma Separated (csv)"
-* Run mongoimport -d songs -c songs --type csv --file songs.txt --headerline
-* Run mongoexport -d songs -c songs -f track,artist,name -o songs.json --jsonArray
-* Output will be songs.json, place this in the the /public/data directory
+Some [karaoke machines](https://www.amazon.com/Acesonic-213-Karaoke-Converter-Recording/product-reviews/B00AFJ820G) allow extracting the song library to a CSV.  A [csv->json converter](http://www.csvjson.com/csv2json) will help create the JSON structure from your CSV.
 
 #### Credits
 [Alex Bain](http://alexba.in/) has provided all inspiriation and tutorials for building and configuring a raspberry pi device as the machine that hosts the application in his [Open Source Universal Remote](http://opensourceuniversalremote.com/) project.  He is also the author of [lirc_node](https://github.com/alexbain/lirc_node).  
