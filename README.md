@@ -16,31 +16,39 @@ Installing mic-night:
 	npm install
 	node server.js
 
-Open ''http://server:3000/'' in a web browser.  
+Open http://localhost:8080 in a web browser.  
 
 The application has been tested using a Raspberry PI and an IR Transceiver (schematic can be found at [Alex Bain's](http://alexba.in/blog/2013/03/09/raspberrypi-ir-schematic-for-lirc/) project site). Any environment that is capable of meeting the deployment requirements and can  interface LIRC and an infrared transceiver should be able to host the applciation.
 
 ## Data files
-The song list is a json file (song.json) in /public/data with the following format:
+The song list is a json file (songs.json) in /public/data with the following format:
 ```
 [
 	{ 
-		"_id" : 2344345, 
 		"track" : 1, 
 		"artist" : "Sinatra", 
-		"name" : "New York" 
+		"name" : "New York", 
+		"genre" : "Easy Listening",
+		"decade" : "70's",
+		"tag" : "",
+		"duet" : "",
+		"favorite" : ""	
 	},
-	{ 
-		"_id" : 234322, 
+	{  
 		"track" : 2, 
 		"artist" : "Dean Martin", 
-		"name" : "Ain't That A Kick In The Head" 
+		"name" : "Ain't That A Kick In The Head",
+		"genre" : "Easy Listening",
+		"decade" : "60's",
+		"tag" : "",
+		"duet" : "",
+		"favorite" : ""
 	}
 ]
-```
-Note: _id is not used in this application and will be fixed at some point.
 
 Some [karaoke machines](https://www.amazon.com/Acesonic-213-Karaoke-Converter-Recording/product-reviews/B00AFJ820G) allow extracting the song library to a CSV.  A [csv->json converter](http://www.csvjson.com/csv2json) will help create the JSON structure from your CSV.
+
+Genre, decade, tag, duet and favorite are used for categorizing, searching and overall organization.  These can be changed in the CSV before converting to JSON.
 
 #### Credits
 [Alex Bain](http://alexba.in/) has provided all inspiriation and tutorials for building and configuring a raspberry pi device as the machine that hosts the application in his [Open Source Universal Remote](http://opensourceuniversalremote.com/) project.  He is also the author of [lirc_node](https://github.com/alexbain/lirc_node).  

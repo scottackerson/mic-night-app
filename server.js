@@ -25,10 +25,6 @@ app.get('/api/songs/play/:track', function(req, res) {
     res.send(200);
 });
 
-app.get('/api/remote/karaoke/USBMode', function(req, res) {
-    console.log('toggle USBMode');
-});
-
 function playTrack(track) {
     if (track) { 
         var i = 0;

@@ -7,7 +7,11 @@
                         <h3>{{song.artist}}</h3>
                 </div>
                 <label>
-                    <a ng-href='' ng-click='send(song)'>{{song.name}}</a>
+                    <a ng-href='' ng-click='send(song)'>{{song.name}}</a> 
+                    <span ng-if='song.favorite === "FavoriteSong"'>
+                        <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color:pink"></span>
+                    </span>
+                    <small>{{song.genre}}, {{song.decade}}, {{song.tag}}</small>
                 </label>
             
             </div>

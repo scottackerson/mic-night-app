@@ -21,19 +21,3 @@ function playTrack (track, $http) {
     $http.get('/api/songs/play/'+track);
 };
 
-MicNightControllers.controller('ToolsController', function($scope, $http) {
-  $scope.USBMode = function(){
-    USBMode($http);
-  }
-    $scope.GUIMode = function(){
-    GUIMode($http);
-  }
-});
-
-function USBMode ($http) {
-    $http.get('/api/remote/karaoke/USBMode');
-};
-
-function GUIMode ($http) {
-    $http.get('/api/remote/karaoke/GUIMode');
-};

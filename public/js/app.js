@@ -7,13 +7,8 @@ micNightApp.config(['$routeProvider',
         templateUrl: '/partials/song-list.html',
         controller: 'SongListController'
       }).
-      when('/tools', {
-        templateUrl: '/partials/tools.html',
-        controller: 'ToolsController'
-      }).
       when('/api/songs/play/:track', {
-        templateUrl: '/partials/tools.html',
-        controller: 'ToolsController'
+
       }).
       otherwise({
         redirectTo: '/'

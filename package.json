@@ -10,5 +10,9 @@
 		"morgan"     : "~1.2.2"
 	},
 	"author": "Scott Ackerson <scott.ackerson@gmail.com>",
-	"version": "0.0.1"
+	"version": "0.0.1",
+	"repository": {
+	  "type": "git",
+	  "url": "git://github.com/scottackerson/mic-night-app.git"
+	}
 }
